@@ -6,6 +6,11 @@ pipeline {
                 sh 'mv ./maven-samples/* .'
                 sh 'mvn clean package'
             }
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
         }
         stage('Deploy') {
             steps {
