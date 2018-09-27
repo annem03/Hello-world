@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mv /maven-samples/* .'
+                sh 'mv ./maven-samples/* .'
                 sh 'mvn clean package'
             }
         }
