@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'scp **/*.war 35.237.200.38:/home/tomcat/apache-tomcat-8.5.31/webapps'
-                sh 'ssh 35.237.200.38 chown tomcat:tomcat /home/tomcat/apache-tomcat-8.5.31/webapps/*.war'
+                sh 'scp -i /var/lib/jenkins/.ssh/id_rsa1 **/*.war root@35.190.145.164:/home/tomcat/apache-tomcat-8.5.31/webapps'
+                sh 'ssh root@35.190.145.164 chown tomcat:tomcat /home/tomcat/apache-tomcat-8.5.31/webapps/*.war'
             }
             post {
                 success {
