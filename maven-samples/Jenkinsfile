@@ -4,16 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn clean package'
             }
         }
-        stage('Test') {
+        stage('Deploy') {
             steps {
-                sh 'mvn test'
+                sh 'scp **/*.war 35.237.200.38:/home/tomcat/apache-tomcat-8.5.31/webapps'
+                sh 'ssh 35.237.200.38 chown tomcat:tomcat /home/tomcat/apache-tomcat-8.5.31/webapps/*.war'
             }
             post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
+                success {
+                    sh 'echo "deployment successful" 
                 }
             }
         }
