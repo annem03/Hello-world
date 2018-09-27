@@ -14,7 +14,7 @@ pipeline {
             }
             post {
                 success {
-                    sh 'echo "deployment successful" 
+                    sh 'echo deployment successful'
                 }
             }
         }
