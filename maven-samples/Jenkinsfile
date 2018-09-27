@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'scp -i /var/lib/jenkins/.ssh/id_rsa1 **/*.war root@35.190.145.164:/home/tomcat/apache-tomcat-8.5.31/webapps'
+                sh 'scp -i /var/lib/jenkins/.ssh/id_rsa1 /var/lib/jenkins/workspace/Fully-automated-pipeline/multi-module/webapp/target/*.war root@35.190.145.164:/home/tomcat/apache-tomcat-8.5.31/webapps'
                 sh 'ssh root@35.190.145.164 chown tomcat:tomcat /home/tomcat/apache-tomcat-8.5.31/webapps/*.war'
             }
             post {
