@@ -1,4 +1,2 @@
 # Hello-world
-starting
-master-1
-test-5
+concourse-testing1
